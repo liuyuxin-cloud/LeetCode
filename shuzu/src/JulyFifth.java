@@ -9,7 +9,6 @@ public class JulyFifth {
 
         System.out.println(Arrays.toString(s.plusOne(a)));
     }
-
 }
 
 class Solution {
