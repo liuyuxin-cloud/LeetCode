@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class JulySixth {
+public class July6 {
     public static void main(String arg[]){
         Solution1 s = new Solution1();
         int[] nums = {1,2,3};
