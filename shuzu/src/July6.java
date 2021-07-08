@@ -5,7 +5,7 @@ import java.util.List;
 public class July6 {
     public static void main(String arg[]){
         Solution1 s = new Solution1();
-        int[] nums = {1,2,3};
+        int[] nums = {1,2,2};
         List<List<Integer>> res = new ArrayList<>();
         res = s.permute(nums);
         for(List<Integer> n : res){
@@ -34,11 +34,11 @@ class Solution1 {
         }
         for (int i = first; i < n; i++) {
             // 动态维护数组
-            Collections.swap(output, first, i);
-            // 继续递归填下一个数
-            backtrack(n, output, res, first + 1);
-            // 撤销操作
-            Collections.swap(output, first, i);
+                Collections.swap(output, first, i);
+                // 继续递归填下一个数
+                backtrack(n, output, res, first + 1);
+                // 撤销操作
+                Collections.swap(output, first, i);
         }
     }
 }
