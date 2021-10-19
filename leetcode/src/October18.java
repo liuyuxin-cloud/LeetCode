@@ -22,11 +22,7 @@ class Solution10_18{
         for (int i = 0; i <= n; i++) {
             dp[i][0] = 0;
         }
-        // for(int i = 0; i<=n; i++){
-        //     for(int j = 0; j<=range; j++){
-        //         dp[i][j] = 0;
-        //     }
-        // }
+
         // 这里是比较经典的状态转移方程
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= range; j++) {
