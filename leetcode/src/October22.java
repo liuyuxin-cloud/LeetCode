@@ -15,6 +15,7 @@ class Solution10_22 {
             res = Math.max(res, values[i] - i + mvp);
             mvp = Math.max(mvp, values[i] + i);
         }
+        Thread
         return res;
     }
 }
