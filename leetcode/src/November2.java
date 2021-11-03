@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * 给你一个m x n的矩阵mat和一个整数 k ，请你返回一个矩阵answer，其中每个answer[i][j]是所有满足下述条件的元素mat[r][c] 的和：
  *
@@ -10,7 +12,7 @@ public class November2 {
     public static void main(String[] args){
         int[][] test = new int[][]{{1,2,3},{4,5,6},{7,8,9}};
         int[][] ans = new Solution11_2().matrixBlockSum(test,1);
-        System.out.println(ans);
+        System.out.println(Arrays.deepToString(ans));
     }
 }
 
@@ -28,7 +30,16 @@ class Solution11_2 {
                 rmax = Math.min(m-1, i+k);
                 cmin = Math.max(j-k, 0);
                 cmax = Math.min(n-1, j+k);
-                answer[i][j] = p[rmax][cmax] - p[rmax][cmin] - p[rmin][cmax] + p[rmin][cmin];
+                if(cmin - 1 < 0 && rmin - 1 < 0){
+                    answer[i][j] = p[rmax][cmax];
+                }
+                else if(cmin - 1 < 0 ){
+                    answer[i][j] = p[rmax][cmax] - p[rmin-1][cmax];
+                }else if(rmin - 1 < 0){
+                    answer[i][j] = p[rmax][cmax] - p[rmax][cmin-1];
+                }else{
+                    answer[i][j] = p[rmax][cmax] - p[rmax][cmin-1] - p[rmin-1][cmax] + p[rmin-1][cmin-1];
+                }
             }
         }
         return answer;
