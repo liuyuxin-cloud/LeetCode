@@ -7,7 +7,7 @@
 public class October18_2 {
     public static void main(String[] args){
         int[] cost = new int[]{1, 100, 1, 1, 1, 100, 1, 1, 100, 1};
-        System.out.println(new Solution10_18_2().minCostClimbingStairs(cost));
+        System.out.println(new Solution10_18_2().minCostClimbingStairs1(cost));
     }
 }
 
@@ -15,7 +15,7 @@ class Solution10_18_2 {
     public int minCostClimbingStairs(int[] cost) {
         int len = cost.length;
         int[] dp = new int[len+1];
-        if(len == 1 || len == 2){
+        if(len == 2){
             return Math.min(cost[0], cost[1]);
         }else{
             dp[0] = 0;
@@ -26,5 +26,19 @@ class Solution10_18_2 {
             }
         }
         return dp[len];
+    }
+    public int minCostClimbingStairs1(int[] cost){
+        int len = cost.length;
+        int p=cost[0], q=cost[1], r=Math.min(p, q);
+        if(len == 2){
+            return Math.min(cost[0], cost[1]);
+        }else{
+            for(int i = 3; i < len + 1; i++){
+                p = q;
+                q = r;
+                r = Math.min(q + cost[i-1], p + cost[i-2]);
+            }
+        }
+        return r;
     }
 }

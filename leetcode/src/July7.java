@@ -2,14 +2,14 @@ import java.util.*;
 
 public class July7{
     public static void main(String args[]){
-        Solution7_5 s = new Solution7_5();
+        Solution7_7 s = new Solution7_7();
         List<List<Integer>> answer = new ArrayList<>();
         answer = s.generate(2);
         System.out.println(answer);
     }
 
 }
-class Solution7_5 {
+class Solution7_7 {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> answer = new ArrayList<>();
         List<Integer> temp = new ArrayList<>();

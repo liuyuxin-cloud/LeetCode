@@ -5,13 +5,13 @@ import java.util.List;
 public class July5 {
     public static void main(String args[]) {
         int[] a = {8,9,3,9};
-        Solution s = new Solution();
+        Solution7_5 s = new Solution7_5();
 
         System.out.println(Arrays.toString(s.plusOne(a)));
     }
 }
 
-class Solution {
+class Solution7_5 {
     public int[] plusOne(int[] digits) {
         int len = digits.length;
         int[] temp = new int[len + 1];

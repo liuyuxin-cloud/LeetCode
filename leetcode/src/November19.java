@@ -20,7 +20,7 @@ public class November19 {
  *     }
  * }
  */
-class Solution {
+class Solution11_19{
     List<Integer> mList = new ArrayList<>();
     public List<Integer> postorderTraversal(TreeNode root) {
         if(root != null){

@@ -14,7 +14,7 @@ public class October18 {
 }
 
 class Solution10_18{
-    public int knapStak(int value[], int weight[], int n, int range) {
+    public int knapStak(int[] value, int[] weight, int n, int range) {
         int[][] dp= new int[ n + 1][range + 1];
         for (int i = 0; i <= range; i++) {
             dp[0][i] = 0;
