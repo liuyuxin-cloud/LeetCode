@@ -14,7 +14,6 @@ class Solution11_4 {
         if(coins.length == 0){
             return -1;
         }
-
         // memo[n]的值： 表示的凑成总金额为n所需的最少的硬币个数
         int[] memo = new int[amount+1];
         // 给memo赋初值，最多的硬币数就是全部使用面值1的硬币进行换

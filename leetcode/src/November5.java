@@ -28,4 +28,8 @@ class Solution11_5 {
 
         return f[n];
     }
+    //算法
+    public boolean divisorGame1(int n) {
+        return n % 2 == 0;
+    }
 }
