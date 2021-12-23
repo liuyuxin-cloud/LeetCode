@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 /**给你二叉树的根节点 root ，返回它节点值的 前序 遍历。
@@ -33,6 +35,21 @@ class Solution11_18 {
             mList.add(root.val);
             preorderTraversal(root.left);
             preorderTraversal(root.right);
+        }
+        return mList;
+    }
+
+    public List<Integer> preorderTraversal1(TreeNode root){
+        if(root == null)    return mList;
+        Deque<TreeNode> stack = new LinkedList<>();
+        while(root != null || !stack.isEmpty()){
+            while(root != null){
+                mList.add(root.val);
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            root = root.right;
         }
         return mList;
     }
