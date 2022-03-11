@@ -31,7 +31,7 @@ class ArraySh{
         long temp;
 
         int h = 1;
-        while(h <= nElems / 3){
+        while(h <= nElems / 3){     //找出最大的合适的h值（间隔）
             h = h * 3 + 1;
         }
         while(h > 0){
