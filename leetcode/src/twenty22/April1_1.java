@@ -4,7 +4,7 @@ import java.util.*;
 
 public class April1_1 {
 }
-class Solution {
+class Solution1_1_1 {
     public boolean canReorderDoubled(int[] arr) {
         Map<Integer, Integer> cnt = new HashMap<Integer, Integer>();
         for (int x : arr) {
