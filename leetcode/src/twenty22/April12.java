@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class April12 {
 }
-class Solution4_22 {
+class Solution4_12 {
     public int getMaximumGenerated(int n) {
         if (n == 0) {
             return 0;
