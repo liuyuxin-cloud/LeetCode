@@ -1,6 +1,10 @@
 package twenty22;
 
 public class April18 {
+    public static void main(String[] args){
+        int[] nums = {0,2,4,7,8,9,5,6,3};
+        new Solution4_18().wiggleSort(nums);
+    }
 }
 class Solution4_18{
     int n = -1;

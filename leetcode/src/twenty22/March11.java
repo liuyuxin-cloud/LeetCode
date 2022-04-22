@@ -7,8 +7,9 @@ package twenty22;
  * 所谓匹配，是要涵盖整个字符串s的，而不是部分字符串。
  */
 public class March11 {
+
 }
-class Solution3_11{
+class Solution3_11 {
     public boolean isMatch(String s, String p) {
         int m = s.length();
         int n = p.length();
@@ -28,13 +29,16 @@ class Solution3_11{
                     }
                 }
             }
-            return f[m][n];
+
         }
+        return f[m][n];
     }
-    public boolean matches(String s, String p, int i, int j){
-        if(i == 0)  return false;
-        if(p.charAt(j-1) == '.'){
+
+    public boolean matches(String s, String p, int i, int j) {
+        if (i == 0) return false;
+        if (p.charAt(j - 1) == '.') {
             return true;
         }
-        return s.charAt(i-1) == p.charAt(j-1);
+        return s.charAt(i - 1) == p.charAt(j - 1);
+    }
 }
