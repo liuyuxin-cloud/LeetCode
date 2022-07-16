@@ -30,7 +30,7 @@ class fourNode {
         this.bottomRight = null;
     }
 
-    public fourNode(boolean val, boolean isLeaf, Node topLeft, Node topRight, Node bottomLeft, Node bottomRight) {
+    public fourNode(boolean val, boolean isLeaf, fourNode topLeft, fourNode topRight, fourNode bottomLeft, fourNode bottomRight) {
         this.val = val;
         this.isLeaf = isLeaf;
         this.topLeft = topLeft;
@@ -67,7 +67,7 @@ class Solution7_15{
                 dfs(grid, r0, c0, (r0 + r1) / 2, (c0 + c1 / 2)),
                 dfs(grid, r0, (c0 + c1) / 2, (r0 + r1) / 2, c1),
                 dfs(grid, (r0 + r1) / 2, c0, r1, (c0 + c1 / 2)),
-                dfs(grid, (r0 + r1) / 2, (c0 + c1 / 2), r1, c1),
+                dfs(grid, (r0 + r1) / 2, (c0 + c1 / 2), r1, c1)
                 );
         return ret;
     }
