@@ -52,4 +52,24 @@ public class SegmentTree<E> {
     public interface Merge<E> {
         E merge (E a, E b);
     }
+
+    public E query(int treeIndex, int l, int r, int ql, int qr) {
+        if(l == ql && r == qr) {
+            return tree[treeIndex];
+        }
+        int mid = (l + r) / 2;
+        int leftTreeIndex = leftChild(treeIndex);
+        int rightTreeIndex = rightChild(treeIndex);
+
+        if(ql > mid) {
+            return query(rightTreeIndex, mid + 1, r, ql, qr);
+        }
+        if(qr <= mid) {
+            return query(leftTreeIndex, l, mid, ql, qr);
+        }
+        E leftResult = query(leftTreeIndex, l, mid, ql, mid);
+        E rightResult = query(rightTreeIndex, mid + 1, r, mid + 1, qr);
+
+        return merger.merge(leftResult,rightResult);
+    }
 }
