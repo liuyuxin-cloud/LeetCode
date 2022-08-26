@@ -1,15 +1,22 @@
 package twenty22;
 
-public class SegmentTree<E> {
-    private E[] tree; //线段树
-    private E[] data; //原有数据
-    private Merge<E> merger;
+import javax.management.ObjectName;
 
-    public SegmentTree(E[] arr) {
-        data = (E[]) new Object[arr.length];
-        tree = (E[]) new Object[arr.length * 4];
+public class SegmentTree {
+    private int[] tree; //线段树
+    private int[] data; //原有数据
+    private int[] lazy; //标记数组
+    private Merge<Integer> merger;
+
+    public SegmentTree(int[] arr) {
+        data = new int[arr.length];
+        tree = new int[arr.length * 4];
+        lazy = new int[arr.length * 4];
         for (int i = 0; i < arr.length; i++) {
             data[i] = arr[i];
+        }
+        for(int i : lazy) {
+            i = -1;
         }
         buildSegmentTree(0, 0, data.length - 1);
     }
@@ -18,7 +25,7 @@ public class SegmentTree<E> {
         return data.length;
     }
 
-    public E get(int index) throws IllegalAccessException {
+    public int get(int index) throws IllegalAccessException {
         if(index < 0 || index > data.length) {
             throw new IllegalAccessException("Index is illegal");
         }
@@ -53,7 +60,7 @@ public class SegmentTree<E> {
         E merge (E a, E b);
     }
 
-    public E query(int treeIndex, int l, int r, int ql, int qr) {
+    public int query(int treeIndex, int l, int r, int ql, int qr) {
         if(l == ql && r == qr) {
             return tree[treeIndex];
         }
@@ -67,13 +74,13 @@ public class SegmentTree<E> {
         if(qr <= mid) {
             return query(leftTreeIndex, l, mid, ql, qr);
         }
-        E leftResult = query(leftTreeIndex, l, mid, ql, mid);
-        E rightResult = query(rightTreeIndex, mid + 1, r, mid + 1, qr);
+        int leftResult = query(leftTreeIndex, l, mid, ql, mid);
+        int rightResult = query(rightTreeIndex, mid + 1, r, mid + 1, qr);
 
         return merger.merge(leftResult,rightResult);
     }
 
-    public void update(int index, E e) throws IllegalAccessException {
+    public void update(int index, int e) throws IllegalAccessException {
         if(index < 0 || index >= data.length) {
             throw new IllegalAccessException("Index is illegal");
         }
@@ -81,7 +88,7 @@ public class SegmentTree<E> {
         updateTree(0, 0, data.length - 1, index, e);
     }
 
-    private void updateTree(int treeIndex, int l, int r, int index, E e) {
+    private void updateTree(int treeIndex, int l, int r, int index, int e) {
         if(l == r) {
             tree[treeIndex] = e;
             return;
@@ -95,5 +102,33 @@ public class SegmentTree<E> {
             updateTree(leftTreeIndex, l, mid, index, e);
         }
         tree[treeIndex] = merger.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
+    }
+
+    public void add(int ql, int qr, int num, int l, int r, int treeIndex) {
+        if(ql <= l && r <= qr) {
+            tree[treeIndex] += (r - l + 1) * num;
+            lazy[treeIndex] += num;
+            return;
+        }
+        int mid = (l + r) / 2;
+        pushDown(l, r, treeIndex);
+        if(ql <= mid) {
+            add(ql, qr, num, l, mid, treeIndex * 2 + 1);
+        }
+        if(qr > mid) {
+            add(ql, qr, num, mid + 1, r, treeIndex * 2 + 2);
+        }
+        tree[treeIndex] = tree[treeIndex * 2 + 1] + tree[treeIndex * 2 + 2];
+    }
+
+    public void pushDown(int l, int r, int treeIndex) {
+        if(lazy[treeIndex] != -1) {
+            int mid = (l + r) / 2;
+            lazy[treeIndex * 2 + 1] = lazy[treeIndex];
+            lazy[treeIndex * 2 + 2] = lazy[treeIndex];
+            tree[treeIndex * 2 + 1] = (mid - l + 1) * lazy[treeIndex];
+            tree[treeIndex * 2 + 2] = (r - mid) * lazy[treeIndex];
+            lazy[treeIndex] = -1;
+        }
     }
 }
