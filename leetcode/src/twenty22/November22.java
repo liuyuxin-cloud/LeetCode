@@ -17,7 +17,7 @@ class Solution11_22 {
             if(m / a + m / b - m / p >= n) r = m - 1;
             else l = m + 1;
         }
-        return (int)(l % 1000000007)
+        return (int)(l % 1000000007);
     }
 
     public int nthMagicalNumber(int n, int a){
