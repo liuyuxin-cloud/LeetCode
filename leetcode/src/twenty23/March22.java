@@ -14,6 +14,10 @@ class ListNode {
         this.val = val;
         this.next = null;
     }
+    ListNode (int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
 }
 
 class Solution3_22 {
