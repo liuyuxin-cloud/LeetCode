@@ -9,21 +9,21 @@ class Solution7_12 {
     public int[][] generateMatrix(int n) {
 
         int[][] nums = new int[n][n];
-        int offset = 1, count = 1;
-        int loop = 1;
+        int offset = 0, count = 1;
+        int loop = 0;
         int i = 0, j = 0;
 
-        while (loop <= n / 2) {
-            for (j = offset - 1; j < n - offset; j++) {
-                nums[offset-1][j] = count++;
+        while (loop < n / 2) {
+            for (j = offset; j < n - offset - 1; j++) {
+                nums[offset][j] = count++;
             }
-            for (i = offset - 1; i < n - offset; i++) {
+            for (i = offset; i < n - offset - 1; i++) {
                 nums[i][j] = count++;
             }
-            for (; j > offset - 1; j--) {
+            for (; j > offset; j--) {
                 nums[i][j] = count++;
             }
-            for (; i > offset - 1; i--) {
+            for (; i > offset; i--) {
                 nums[i][j] = count++;
             }
             offset++;
