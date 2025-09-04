@@ -2,10 +2,7 @@ package twenty25;
 
 //155. 最小栈
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class September2 {
 }
@@ -88,5 +85,53 @@ class MinStack1 {
 
     public int getMin() {
         return minStack.peek();
+    }
+}
+
+class MinStack2 {
+
+    Integer min = null;
+    Stack<Long> data = new Stack<>();
+
+    /**
+     * initialize your data structure here.
+     */
+    public MinStack2() {
+
+    }
+
+    public void push(int x) {
+        if (data.isEmpty()) {
+            data.push(0L);
+            min = x;
+        } else {
+            //如果x是最小的数，这里可能越界，所以用Long来保存
+            data.push(Long.valueOf(x) - min);
+            min = Math.min(x, min);
+        }
+    }
+
+    public void pop() {
+        Long diff = data.pop();
+        if (diff >= 0) {
+            //return min + diff;
+        } else {
+            int res = min;
+            min = (int) (min - diff);
+            //return res;
+        }
+    }
+
+    public int top() {
+        Long diff = data.peek();
+        if (diff >= 0) {
+            return (int) (min + diff);
+        } else {
+            return min;
+        }
+    }
+
+    public int getMin() {
+        return min;
     }
 }
