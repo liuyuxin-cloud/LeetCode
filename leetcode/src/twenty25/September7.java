@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class September7 {
 }
-class Solution {
+class Solution9_7 {
     public boolean isSymmetric(TreeNode root) {
         return isMirror(root.left, root.right);
     }
