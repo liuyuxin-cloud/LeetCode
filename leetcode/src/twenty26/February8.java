@@ -17,7 +17,7 @@ class Solution2_8 {
         while (l <= r) {
             int mid = (l + r) >> 1;
             if (nums[mid] == target) return mid;
-            if (nums[0] < nums[mid]) {
+            if (nums[0] <= nums[mid]) {
                 if (nums[0] <= target && target < nums[mid]) r = mid - 1;
                 else l = mid + 1;
             }
